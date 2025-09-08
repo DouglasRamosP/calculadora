@@ -79,6 +79,10 @@ class Calculator {
     this.operation = undefined;
   }
 
+  delete() {
+    this.currentOperand = this.currentOperand.toString().slice(0, -1);
+  }
+
   appendNumber(number) {
     if (this.currentOperand.includes(".") && number === ".") return;
     this.currentOperand = `${this.currentOperand}${number.toString()}`;
@@ -118,6 +122,11 @@ allClearButton.addEventListener("click", () => {
 
 equalButton.addEventListener("click", () => {
   calculator.calculate();
+  calculator.updateDisplay();
+});
+
+deleteButton.addEventListener("click", () => {
+  calculator.delete();
   calculator.updateDisplay();
 });
 
